@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Calibracion.DDD.Domain/1.0.0": {
+        "runtime": {
+          "Calibracion.DDD.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Calibracion.DDD.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

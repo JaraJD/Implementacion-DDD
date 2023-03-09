@@ -1,0 +1,12 @@
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\bin\Debug\net6.0\Calibracion.DDD.Domain.deps.json
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\bin\Debug\net6.0\Calibracion.DDD.Domain.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\bin\Debug\net6.0\Calibracion.DDD.Domain.pdb
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.csproj.AssemblyReference.cache
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.AssemblyInfoInputs.cache
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.AssemblyInfo.cs
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.csproj.CoreCompileInputs.cache
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\refint\Calibracion.DDD.Domain.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\Calibracion.DDD.Domain.pdb
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.Domain\obj\Debug\net6.0\ref\Calibracion.DDD.Domain.dll

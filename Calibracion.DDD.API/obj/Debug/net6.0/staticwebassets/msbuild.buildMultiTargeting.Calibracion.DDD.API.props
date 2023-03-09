@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Calibracion.DDD.API.props" />
+</Project>
