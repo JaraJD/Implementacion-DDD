@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Cliente\Repositorios\" />
-    <Folder Include="Instrumento\Repositorios\" />
+    <Folder Include="Cliente\Comandos\" />
+    <Folder Include="Cliente\Eventos\" />
+    <Folder Include="Instrumento\Comandos\" />
+    <Folder Include="Instrumento\Eventos\" />
   </ItemGroup>
 
 </Project>

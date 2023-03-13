@@ -1,0 +1,15 @@
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\bin\Debug\net6.0\Calibracion.DDD.UseCase.deps.json
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\bin\Debug\net6.0\Calibracion.DDD.UseCase.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\bin\Debug\net6.0\Calibracion.DDD.UseCase.pdb
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\bin\Debug\net6.0\Calibracion.DDD.Domain.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\bin\Debug\net6.0\Calibracion.DDD.Domain.pdb
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.csproj.AssemblyReference.cache
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.AssemblyInfoInputs.cache
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.AssemblyInfo.cs
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.csproj.CoreCompileInputs.cache
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.csproj.CopyComplete
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\refint\Calibracion.DDD.UseCase.dll
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\Calibracion.DDD.UseCase.pdb
+C:\Users\juans\Desktop\Programacion\C# .NET\DDD\Calibracion.DDD\Calibracion.DDD.UseCase\obj\Debug\net6.0\ref\Calibracion.DDD.UseCase.dll

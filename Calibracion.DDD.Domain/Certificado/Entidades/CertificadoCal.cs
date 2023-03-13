@@ -1,16 +1,15 @@
-﻿using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
+﻿using Calibracion.DDD.Domain.Certificado.Eventos;
+using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
+using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
+using Calibracion.DDD.Domain.CommonsDDD;
 
 namespace Calibracion.DDD.Domain.Certificado.Entidades
 {
-    public class CertificadoCal
+    public class CertificadoCal : AggregateEvent<CertificadoId>
     {
-        public Guid Id { get; init; }
+        public CertificadoId Id { get; init; }
 
-        public Guid ClienteId { get; private set; }
-
-        public Guid InstrumentoId { get; private set; }
-
-        public CertificadoValoresTec ValoresTecnicos { get; private set; }
+		public CertificadoValoresTec ValoresTecnicos { get; private set; }
 
         public CertificadoDatosEmision DatosEmision { get; private set; }
 
@@ -18,40 +17,47 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 
         public virtual Patron Patron { get; private set; }
 
-        public CertificadoCal(Guid id)
+        public CertificadoCal(CertificadoId id) : base(id) 
         {
-            Id = id;
+            AppendChange(new CertificadoCreado(id.ToString()));
         }
 
         public void SetValoresTecnicos(CertificadoValoresTec valores)
         {
-            ValoresTecnicos = valores;
+			AppendChange(new ValoresTecAdded(valores));
+
         }
 
-        public void SetDatosEmision(CertificadoDatosEmision datos)
+		public void SetTecnicoACertificado(Tecnico tecnico)
+		{
+			AppendChange(new TecnicoAdded(tecnico));
+		}
+
+		public void SetTecnicoDatos(TecnicoDatosPersonales datos)
+		{
+			AppendChange(new TecnicoDatosAdded(datos));
+		}
+
+		public void SetTecnicoAgregado(Tecnico tecnico)
         {
-            DatosEmision = datos;
-        }
+			Tecnico = tecnico;
+		}
 
-        public void SetClienteId(Guid clienteId)
-        {
-            ClienteId = clienteId;
-        }
+		public void SetValoresTecnicosAgregado(CertificadoValoresTec valores)
+		{
+			ValoresTecnicos = valores;
 
-        public void SetInstrumentoId(Guid instrumentoId)
-        {
-            InstrumentoId = instrumentoId;
-        }
+		}
 
-        public void SetTecnico(Tecnico tecnico)
-        {
-            Tecnico = tecnico;
-        }
-
-        public void SetPatron(Patron patron)
+		public void SetPatronAgregado(Patron patron)
         {
             Patron = patron;
         }
 
-    }
+		public void SetDatosEmision(CertificadoDatosEmision datos)
+		{
+			DatosEmision = datos;
+		}
+
+	}
 }

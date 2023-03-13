@@ -19,7 +19,7 @@ namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Certificado
             Tolerancia = tolerancia;
         }
 
-        public static CertificadoValoresTec create(double errorFinal, double indicacion, double tolerancia)
+        public static CertificadoValoresTec Create(double errorFinal, double indicacion, double tolerancia)
         {
             validate(errorFinal, indicacion, tolerancia);
             return new CertificadoValoresTec(errorFinal, indicacion, tolerancia);

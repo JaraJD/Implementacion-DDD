@@ -6,6 +6,8 @@ namespace Calibracion.DDD.Domain.Cliente.Entidades
     {
         public Guid Id { get; init; }
 
+        public Guid ResponsableId { get; private set; }
+
         public DatosdelCliente DatosCliente { get; private set; }
 
         public List<Solicitud> Solicitudes { get; private set; }
@@ -32,5 +34,10 @@ namespace Calibracion.DDD.Domain.Cliente.Entidades
         {
             Responsable = responsable;
         }
-    }
+
+		public void SetResponsableId(Guid responsableId)
+		{
+			ResponsableId = responsableId;
+		}
+	}
 }

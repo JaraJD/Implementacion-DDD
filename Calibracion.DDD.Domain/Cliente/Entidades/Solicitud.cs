@@ -7,6 +7,8 @@ namespace Calibracion.DDD.Domain.Cliente.Entidades
     {
         public Guid Id { get; init; }
 
+        public Guid ClienteId { get; private set; }
+
         public Intervencion Intervencion { get; private set; }
 
         public Cliente Cliente { get; private set; }

@@ -6,6 +6,10 @@ namespace Calibracion.DDD.Domain.Instrumento.Entidades
     {
         public Guid Id { get; init; }
 
+		public Guid EstadoId { get; private set; }
+
+		public Guid ProcedimientoId { get; private set; }
+
         public DatosFabricacion DatosFabricacion { get; private set; }
 
 		public virtual EstadoMetrologico EstadoMet { get; private set; }
@@ -30,6 +34,16 @@ namespace Calibracion.DDD.Domain.Instrumento.Entidades
 		public void SetProcedimiento(ProcedimientoCalibracion procedimiento)
 		{
 			Procedimiento = procedimiento;
+		}
+
+		public void SetEstadoId(Guid Id)
+		{
+			EstadoId = Id;
+		}
+
+		public void SetProcedimientoId(Guid Id)
+		{
+			ProcedimientoId = Id;
 		}
 	}
 }
