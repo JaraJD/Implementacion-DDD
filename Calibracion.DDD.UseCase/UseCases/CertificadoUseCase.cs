@@ -2,17 +2,12 @@
 using Calibracion.DDD.Domain.Certificado.Entidades;
 using Calibracion.DDD.Domain.Certificado.Eventos;
 using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
+using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron;
 using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
 using Calibracion.DDD.Domain.CommonsDDD;
 using Calibracion.DDD.Domain.Generics;
 using Calibracion.DDD.UseCase.Gateways;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calibracion.DDD.UseCase.UseCases
 {
@@ -33,8 +28,38 @@ namespace Calibracion.DDD.UseCase.UseCases
 			var certificadoGenerado = certificadoCambio.CreateAggregate(listDomainEvent, certificadoId);
 
 			Tecnico newTecnico = new Tecnico(TecnicoId.Of(Guid.NewGuid()));
+			var datosPersoanles = TecnicoDatosPersonales.Create(
+					   command.Nombre,
+					   command.Cargo,
+					   command.Correo
+					);
+			newTecnico.SetDatosPersonales( datosPersoanles );
+
 
 			certificadoGenerado.SetTecnicoACertificado(newTecnico);
+
+
+			List<DomainEvent> listDomain = certificadoGenerado.getUncommittedChanges();
+			await SaveEvents(listDomain);
+
+		}
+
+		public async Task AddPatronToCertificado(AddPatronCommand command)
+		{
+			var certificadoCambio = new CertificadoChangeApply();
+			var listDomainEvent = await GetEventsByAggregateID(command.CertificadoId);
+			var certificadoId = CertificadoId.Of(Guid.Parse(command.CertificadoId));
+			var certificadoGenerado = certificadoCambio.CreateAggregate(listDomainEvent, certificadoId);
+
+			Patron newPatron = new Patron(PatronId.Of(Guid.NewGuid()));
+			var ValorReferencia = PatronValorRef.Create(command.ValorReferencia);
+			var Trazabilidad = PatronTrazabilidad.Create(command.NumeroCertificado);
+
+			newPatron.SetValorRef(ValorReferencia);
+			newPatron.SetTrazabilidad(Trazabilidad);
+
+			certificadoGenerado.SetPatronACertificado(newPatron);
+
 
 			List<DomainEvent> listDomain = certificadoGenerado.getUncommittedChanges();
 			await SaveEvents(listDomain);
@@ -51,6 +76,7 @@ namespace Calibracion.DDD.UseCase.UseCases
 					   command.Tolerancia
 					);
 
+			certificado.setCertificado(certificado.Id);
 			certificado.SetValoresTecnicos(valoresTecnicos);
 			List<DomainEvent> listDomain = certificado.getUncommittedChanges();
 			await SaveEvents(listDomain);
@@ -79,6 +105,15 @@ namespace Calibracion.DDD.UseCase.UseCases
 						break;
 					case TecnicoDatosAdded tecnicoDatosAdded:
 						stored.EventBody = JsonConvert.SerializeObject(tecnicoDatosAdded);
+						break;
+					case PatronAdded patronAdded:
+						stored.EventBody = JsonConvert.SerializeObject(patronAdded);
+						break;
+					case PatronValorRefAdded patronValorRefAdded:
+						stored.EventBody = JsonConvert.SerializeObject(patronValorRefAdded);
+						break;
+					case PatronTrazabilidadAdded patronTrazabilidadAdded:
+						stored.EventBody = JsonConvert.SerializeObject(patronTrazabilidadAdded);
 						break;
 				}
 				await _storedEventRepository.AddAsync(stored);

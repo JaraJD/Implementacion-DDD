@@ -14,7 +14,7 @@ namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Certificado
 
         public string FechaEmision { get; set; }
 
-        internal CertificadoDatosEmision(string numeroCertificado, string fechaRealizacion, string fechaEmision)
+        public CertificadoDatosEmision(string numeroCertificado, string fechaRealizacion, string fechaEmision)
         {
             NumeroCertificado = numeroCertificado;
             FechaRealizacion = fechaRealizacion;

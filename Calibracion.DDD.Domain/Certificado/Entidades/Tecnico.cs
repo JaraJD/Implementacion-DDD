@@ -10,8 +10,6 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 {
     public class Tecnico : Entity<TecnicoId>
     {
-        public Guid Id { get; init; }
-
         public TecnicoDatosPersonales DatosPersonales { get; private set; }
 
         public Tecnico(TecnicoId id): base(id) { }
@@ -20,5 +18,6 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
         {
             DatosPersonales = datos;
         }
-    }
+
+	}
 }

@@ -14,7 +14,7 @@ namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico
 
         public string Correo { get; init; }
 
-        internal TecnicoDatosPersonales(string nombre, string cargo, string correo)
+        public TecnicoDatosPersonales(string nombre, string cargo, string correo)
         {
             Nombre = nombre;
             Cargo = cargo;

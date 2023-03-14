@@ -7,7 +7,7 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 {
     public class CertificadoCal : AggregateEvent<CertificadoId>
     {
-        public CertificadoId Id { get; init; }
+        public CertificadoId Id { get; private set; }
 
 		public CertificadoValoresTec ValoresTecnicos { get; private set; }
 
@@ -19,10 +19,15 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 
         public CertificadoCal(CertificadoId id) : base(id) 
         {
-            AppendChange(new CertificadoCreado(id.ToString()));
+			Id = id;
         }
 
-        public void SetValoresTecnicos(CertificadoValoresTec valores)
+		public void setCertificado(CertificadoId id)
+		{
+			AppendChange(new CertificadoCreado(id.ToString()));
+		}
+
+		public void SetValoresTecnicos(CertificadoValoresTec valores)
         {
 			AppendChange(new ValoresTecAdded(valores));
 
@@ -36,6 +41,11 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 		public void SetTecnicoDatos(TecnicoDatosPersonales datos)
 		{
 			AppendChange(new TecnicoDatosAdded(datos));
+		}
+
+		public void SetPatronACertificado(Patron patron)
+		{
+			AppendChange(new PatronAdded(patron));
 		}
 
 		public void SetTecnicoAgregado(Tecnico tecnico)

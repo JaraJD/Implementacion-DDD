@@ -29,6 +29,18 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 					case TecnicoAdded tecnicoAdded:
 						certificado.SetTecnicoAgregado(tecnicoAdded.Tecnico);
 						break;
+
+					case PatronAdded patronAdded:
+						certificado.SetPatronAgregado(patronAdded.Patron);
+						break;
+
+					case PatronValorRefAdded patronValorRefAdded:
+						certificado.Patron.SetValorRef(patronValorRefAdded.valor);
+						break;
+
+					case PatronTrazabilidadAdded patronTrazabilidadAdded:
+						certificado.Patron.SetTrazabilidad(patronTrazabilidadAdded.Trazabilidad);
+						break;
 				}
 
 			});

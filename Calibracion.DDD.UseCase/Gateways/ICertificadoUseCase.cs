@@ -12,5 +12,7 @@ namespace Calibracion.DDD.UseCase.Gateways
 		Task CrearCertificado(CreateCertificadoCommand command);
 
 		Task AddTecnicoToCertificado(AddTecnicoCommand command);
+
+		Task AddPatronToCertificado(AddPatronCommand command);
 	}
 }

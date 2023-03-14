@@ -10,7 +10,7 @@ namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico
     public class TecnicoId : Identity
     {
 
-        internal TecnicoId(Guid id) : base(id)
+        public TecnicoId(Guid id) : base(id)
         {
         }
 

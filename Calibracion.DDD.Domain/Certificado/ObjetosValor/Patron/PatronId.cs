@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calibracion.DDD.Domain.CommonsDDD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,23 +7,13 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron
 {
-    internal class PatronId
+    public class PatronId : Identity
     {
-        public Guid Id { get; set; }
+        public PatronId(Guid id) : base(id) { }
 
-        internal PatronId(Guid id)
-        {
-            Id = id;
-        }
-
-        public static PatronId Create(Guid id)
+		public static PatronId Of(Guid id)
         {
             return new PatronId(id);
-        }
-
-        public static implicit operator Guid(PatronId patronId)
-        {
-            return patronId.Id;
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Calibracion.DDD.Domain.Certificado.Eventos
 
 		public TecnicoDatosAdded(TecnicoDatosPersonales datosPersonales) : base("datosPersonalestecnico.agregados")
 		{
-
 			DatosPersonales = datosPersonales;
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron;
+using Calibracion.DDD.Domain.CommonsDDD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Certificado.Entidades
 {
-    public class Patron
+    public class Patron : Entity<PatronId>
     {
-        public Guid Id { get; init; }
 
         public PatronValorRef ValorRef { get; private set; }
 
         public PatronTrazabilidad Trazabilidad { get; private set; }
 
-        internal Patron(Guid id)
+        public Patron(PatronId id) : base(id)
         {
-            Id = id;
         }
 
         public void SetValorRef(PatronValorRef valorRef)

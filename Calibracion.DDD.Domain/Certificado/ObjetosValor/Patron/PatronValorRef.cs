@@ -10,21 +10,22 @@ namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron
     {
         public double Value { get; init; }
 
-        internal PatronValorRef(double value)
+        public PatronValorRef(double value)
         {
             Value = value;
         }
 
         public static PatronValorRef Create(double value)
         {
+            validate(value);
             return new PatronValorRef(value);
         }
 
         public static void validate(double value)
         {
-            if (value == null)
+            if (value <= 0)
             {
-                throw new ArgumentNullException("El valor no puede ser nulo");
+                throw new ArgumentException("El valor no puede ser 0 o menor a 0");
             }
         }
     }

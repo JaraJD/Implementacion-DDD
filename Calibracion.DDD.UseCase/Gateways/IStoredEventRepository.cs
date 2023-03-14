@@ -11,5 +11,6 @@ namespace Calibracion.DDD.UseCase.Gateways
 	public interface IStoredEventRepository<T> : IRepositoryBase<T> where T : class
 	{
 		Task<List<StoredEvent>> GetEventsByAggregateId(string aggregateId);
+		//Task<StoredEvent> GetEventByAggregateId(string aggregateId);
 	}
 }

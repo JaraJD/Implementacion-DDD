@@ -22,5 +22,11 @@ namespace Calibracion.DDD.Infrastructure
 			return dataBaseContext.StoredEvents.Where(evento => evento.AggregateId == aggregateId).ToList();
 
 		}
+
+		//public async Task<List<StoredEvent>> GetEventByAggregateId(string aggregateId)
+		//{
+		//	return dataBaseContext.StoredEvents.Where(evento => evento.AggregateId == aggregateId).ToList();
+
+		//}
 	}
 }

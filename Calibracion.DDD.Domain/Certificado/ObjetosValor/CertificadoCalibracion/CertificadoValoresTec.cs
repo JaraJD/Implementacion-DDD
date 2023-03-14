@@ -12,7 +12,7 @@ namespace Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Certificado
         public double Indicacion { get; init; }
         public double Tolerancia { get; init; }
 
-        internal CertificadoValoresTec(double errorFinal, double indicacion, double tolerancia)
+        public CertificadoValoresTec(double errorFinal, double indicacion, double tolerancia)
         {
             ErrorFinal = errorFinal;
             Indicacion = indicacion;
