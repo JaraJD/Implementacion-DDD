@@ -32,5 +32,11 @@ namespace Calibracion.DDD.API.Controllers
 		{
 			await _useCase.AddPatronToCertificado(command);
 		}
+
+		[HttpPut("ActualizarDatosEmision")]
+		public async Task Update_Datos_Emision(UpdateDatosEmisionComman command)
+		{
+			await _useCase.UpdateDatosEmision(command);
+		}
 	}
 }

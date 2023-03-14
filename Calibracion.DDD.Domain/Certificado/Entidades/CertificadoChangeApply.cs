@@ -22,6 +22,14 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 						certificado.SetValoresTecnicosAgregado(valoresTecAdded.Valores);
 						break;
 
+					case DatosEmisionAdded datosEmisionAdded:
+						certificado.SetDatosEmisionAgregado(datosEmisionAdded.Datos);
+						break;
+
+					case DatosEmisionUpdated datosEmisionUpdated:
+						certificado.SetDatosEmisionAgregado(datosEmisionUpdated.Datos);
+						break;
+
 					case TecnicoDatosAdded tecnicoDatosAdded:
 						certificado.Tecnico.SetDatosPersonales(tecnicoDatosAdded.DatosPersonales);
 						break;

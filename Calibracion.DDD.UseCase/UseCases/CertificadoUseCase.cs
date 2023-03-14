@@ -66,6 +66,27 @@ namespace Calibracion.DDD.UseCase.UseCases
 
 		}
 
+		public async Task UpdateDatosEmision(UpdateDatosEmisionComman command)
+		{
+			var certificadoCambio = new CertificadoChangeApply();
+			var listDomainEvent = await GetEventsByAggregateID(command.CertificadoId);
+			var certificadoId = CertificadoId.Of(Guid.Parse(command.CertificadoId));
+			var certificadoGenerado = certificadoCambio.CreateAggregate(listDomainEvent, certificadoId);
+
+			var DatosEmision = CertificadoDatosEmision.Create(
+				command.NumeroCertificado,
+				command.FechaRealizacion,
+				command.FechaEmision);
+
+
+			certificadoGenerado.UpdateDatosEmision(DatosEmision);
+
+
+			List<DomainEvent> listDomain = certificadoGenerado.getUncommittedChanges();
+			await SaveEvents(listDomain);
+
+		}
+
 		public async Task CrearCertificado(CreateCertificadoCommand command)
 		{
 
@@ -75,9 +96,15 @@ namespace Calibracion.DDD.UseCase.UseCases
 					   command.Indicacion,
 					   command.Tolerancia
 					);
+			var DatosEmision = CertificadoDatosEmision.Create(
+				command.NumeroCertificado,
+				command.FechaRealizacion,
+				command.FechaEmision);
 
 			certificado.setCertificado(certificado.Id);
 			certificado.SetValoresTecnicos(valoresTecnicos);
+			certificado.SetDatosEmision(DatosEmision);
+
 			List<DomainEvent> listDomain = certificado.getUncommittedChanges();
 			await SaveEvents(listDomain);
 
@@ -99,6 +126,12 @@ namespace Calibracion.DDD.UseCase.UseCases
 						break;
 					case ValoresTecAdded valoresTecAdded:
 						stored.EventBody = JsonConvert.SerializeObject(valoresTecAdded);
+						break;
+					case DatosEmisionAdded datosEmisionAdded:
+						stored.EventBody = JsonConvert.SerializeObject(datosEmisionAdded);
+						break;
+					case DatosEmisionUpdated datosEmisionUpdated:
+						stored.EventBody = JsonConvert.SerializeObject(datosEmisionUpdated);
 						break;
 					case TecnicoAdded tecnicoAdded:
 						stored.EventBody = JsonConvert.SerializeObject(tecnicoAdded);
