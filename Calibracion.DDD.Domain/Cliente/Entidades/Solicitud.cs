@@ -1,19 +1,18 @@
-﻿using Calibracion.DDD.Domain.AggCliente.ObjetosValor.Cliente;
+﻿
 using Calibracion.DDD.Domain.Cliente.ObjetosValor.Solicitud;
+using Calibracion.DDD.Domain.CommonsDDD;
 
 namespace Calibracion.DDD.Domain.Cliente.Entidades
 {
-    public class Solicitud
+    public class Solicitud : Entity<SolicitudId>
     {
-        public Guid Id { get; init; }
-
-        public Guid ClienteId { get; private set; }
+        public SolicitudId Id { get; init; }
 
         public Intervencion Intervencion { get; private set; }
 
         public Cliente Cliente { get; private set; }
 
-        internal Solicitud(Guid id)
+        public Solicitud(SolicitudId id) :  base(id)
         {
             Id = id;
 		}

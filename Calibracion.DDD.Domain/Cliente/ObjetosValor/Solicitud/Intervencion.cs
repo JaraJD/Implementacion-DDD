@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Cliente.ObjetosValor.Solicitud
 {
-	public record Intervencion
+	public class Intervencion
 	{
 		public bool Calibracion { get; init; }
 
-		internal Intervencion(bool calibracion)
+		public Intervencion(bool calibracion)
 		{
 			Calibracion = calibracion;
 		}

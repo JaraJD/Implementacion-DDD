@@ -1,4 +1,6 @@
 ﻿using Calibracion.DDD.Domain.Certificado.Comandos;
+using Calibracion.DDD.Domain.Certificado.Entidades;
+using Calibracion.DDD.Domain.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,12 @@ namespace Calibracion.DDD.UseCase.Gateways
 {
 	public interface ICertificadoUseCase
 	{
-		Task CrearCertificado(CreateCertificadoCommand command);
+		Task<CertificadoDTO> CrearCertificado(CreateCertificadoCommand command);
 
-		Task AddTecnicoToCertificado(AddTecnicoCommand command);
+		Task<TecnicoAgregadoDTO> AddTecnicoToCertificado(AddTecnicoCommand command);
 
-		Task AddPatronToCertificado(AddPatronCommand command);
+		Task<PatronAgregadoDTO> AddPatronToCertificado(AddPatronCommand command);
 
-		Task UpdateDatosEmision(UpdateDatosEmisionComman command);
+		Task<DatosEmisionDTO> UpdateDatosEmision(UpdateDatosEmisionComman command);
 	}
 }

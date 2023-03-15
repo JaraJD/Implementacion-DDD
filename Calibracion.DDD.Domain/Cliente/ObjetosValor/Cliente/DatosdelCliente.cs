@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calibracion.DDD.Domain.AggCliente.ObjetosValor.Cliente
+namespace Calibracion.DDD.Domain.Cliente.ObjetosValor.Cliente
 {
-    public record DatosdelCliente
+    public class DatosdelCliente
     { 
         public string Laboratorio { get; init; }
 
         public string Codigo { get; init; }
 
-        internal DatosdelCliente(string laboratorio, string codigo)
+        public DatosdelCliente(string laboratorio, string codigo)
         {
             Laboratorio = laboratorio;
             Codigo = codigo;

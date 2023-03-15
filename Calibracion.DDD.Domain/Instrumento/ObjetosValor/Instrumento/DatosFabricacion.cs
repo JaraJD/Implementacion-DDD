@@ -1,9 +1,4 @@
-﻿using Calibracion.DDD.Domain.AggCliente.ObjetosValor.Cliente;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento
 {

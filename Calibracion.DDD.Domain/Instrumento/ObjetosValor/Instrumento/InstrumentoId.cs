@@ -1,4 +1,4 @@
-﻿using Calibracion.DDD.Domain.AggCliente.ObjetosValor.Cliente;
+﻿using Calibracion.DDD.Domain.Cliente.ObjetosValor.Cliente;
 using System;
 using System.Collections.Generic;
 using System.Linq;

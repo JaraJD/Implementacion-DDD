@@ -1,4 +1,5 @@
 ﻿using Calibracion.DDD.Domain.Certificado.Comandos;
+using Calibracion.DDD.Domain.DTO;
 using Calibracion.DDD.UseCase.Gateways;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,27 +17,27 @@ namespace Calibracion.DDD.API.Controllers
 		}
 
 		[HttpPost]
-		public async Task Post(CreateCertificadoCommand command)
+		public async Task<CertificadoDTO> Post(CreateCertificadoCommand command)
 		{
-			await _useCase.CrearCertificado(command);
+			return await _useCase.CrearCertificado(command);
 		}
 
 		[HttpPost("AgregarTecnico")]
-		public async Task Add_Tecnico_To_Certificado(AddTecnicoCommand command)
+		public async Task<TecnicoAgregadoDTO> Add_Tecnico_To_Certificado(AddTecnicoCommand command)
 		{
-			await _useCase.AddTecnicoToCertificado(command);
+			return await _useCase.AddTecnicoToCertificado(command);
 		}
 
 		[HttpPost("AgregarPatron")]
-		public async Task AddPatron_To_Certificado(AddPatronCommand command)
+		public async Task<PatronAgregadoDTO> AddPatron_To_Certificado(AddPatronCommand command)
 		{
-			await _useCase.AddPatronToCertificado(command);
+			return await _useCase.AddPatronToCertificado(command);
 		}
 
 		[HttpPut("ActualizarDatosEmision")]
-		public async Task Update_Datos_Emision(UpdateDatosEmisionComman command)
+		public async Task<DatosEmisionDTO> Update_Datos_Emision(UpdateDatosEmisionComman command)
 		{
-			await _useCase.UpdateDatosEmision(command);
+			return await _useCase.UpdateDatosEmision(command);
 		}
 	}
 }

@@ -1,13 +1,8 @@
-﻿using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Calibracion.DDD.Domain.Cliente.ObjetosValor.Responsable
 {
-	public record DatosPersonales
+	public class DatosPersonales
 	{
 		public string Nombre { get; init; }
 
@@ -15,7 +10,7 @@ namespace Calibracion.DDD.Domain.Cliente.ObjetosValor.Responsable
 
 		public string Correo { get; init; }
 
-		internal DatosPersonales(string nombre, string cargo, string correo)
+		public DatosPersonales(string nombre, string cargo, string correo)
 		{
 			Nombre = nombre;
 			Cargo = cargo;

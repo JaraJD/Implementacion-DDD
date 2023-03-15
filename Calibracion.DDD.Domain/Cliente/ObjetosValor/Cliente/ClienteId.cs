@@ -1,29 +1,18 @@
-﻿using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Calibracion.DDD.Domain.CommonsDDD;
 
-namespace Calibracion.DDD.Domain.AggCliente.ObjetosValor.Cliente
+namespace Calibracion.DDD.Domain.Cliente.ObjetosValor.Cliente
 {
-    public record ClienteId
+    public class ClienteId : Identity
     {
-        public Guid Id { get; init; }
 
-        internal ClienteId(Guid id)
+        public ClienteId(Guid id) : base (id)
         {
-            Id = id;
         }
 
-        public static ClienteId Create(Guid id)
+        public static ClienteId Of(Guid id)
         {
             return new ClienteId(id);
-        }
-
-        public static implicit operator Guid(ClienteId clienteId)
-        {
-            return clienteId.Id;
         }
     }
 }

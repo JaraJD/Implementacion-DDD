@@ -5,6 +5,7 @@ using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCali
 using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron;
 using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
 using Calibracion.DDD.Domain.CommonsDDD;
+using Calibracion.DDD.Domain.DTO;
 using Calibracion.DDD.Domain.Generics;
 using Calibracion.DDD.UseCase.Gateways;
 using Newtonsoft.Json;
@@ -15,17 +16,18 @@ namespace Calibracion.DDD.UseCase.UseCases
 	{
 		private readonly IStoredEventRepository<StoredEvent> _storedEventRepository;
 
-		public CertificadoUseCase(IStoredEventRepository<StoredEvent> studentRepository)
+		public CertificadoUseCase(IStoredEventRepository<StoredEvent> certificadoRepository)
 		{
-			_storedEventRepository = studentRepository;
+			_storedEventRepository = certificadoRepository;
 		}
 
-		public async Task AddTecnicoToCertificado(AddTecnicoCommand command)
+		public async Task<TecnicoAgregadoDTO> AddTecnicoToCertificado(AddTecnicoCommand command)
 		{
 			var certificadoCambio = new CertificadoChangeApply();
 			var listDomainEvent = await GetEventsByAggregateID(command.CertificadoId);
 			var certificadoId = CertificadoId.Of(Guid.Parse(command.CertificadoId));
 			var certificadoGenerado = certificadoCambio.CreateAggregate(listDomainEvent, certificadoId);
+			var tecnicoAgregado = new TecnicoAgregadoDTO(certificadoId);
 
 			Tecnico newTecnico = new Tecnico(TecnicoId.Of(Guid.NewGuid()));
 			var datosPersoanles = TecnicoDatosPersonales.Create(
@@ -37,19 +39,20 @@ namespace Calibracion.DDD.UseCase.UseCases
 
 
 			certificadoGenerado.SetTecnicoACertificado(newTecnico);
-
+			tecnicoAgregado.SetTecnico(newTecnico);
 
 			List<DomainEvent> listDomain = certificadoGenerado.getUncommittedChanges();
 			await SaveEvents(listDomain);
-
+			return tecnicoAgregado;
 		}
 
-		public async Task AddPatronToCertificado(AddPatronCommand command)
+		public async Task<PatronAgregadoDTO> AddPatronToCertificado(AddPatronCommand command)
 		{
 			var certificadoCambio = new CertificadoChangeApply();
 			var listDomainEvent = await GetEventsByAggregateID(command.CertificadoId);
 			var certificadoId = CertificadoId.Of(Guid.Parse(command.CertificadoId));
 			var certificadoGenerado = certificadoCambio.CreateAggregate(listDomainEvent, certificadoId);
+			var patronAgregado = new PatronAgregadoDTO(certificadoId);
 
 			Patron newPatron = new Patron(PatronId.Of(Guid.NewGuid()));
 			var ValorReferencia = PatronValorRef.Create(command.ValorReferencia);
@@ -59,19 +62,20 @@ namespace Calibracion.DDD.UseCase.UseCases
 			newPatron.SetTrazabilidad(Trazabilidad);
 
 			certificadoGenerado.SetPatronACertificado(newPatron);
-
+			patronAgregado.SetPatron(newPatron);
 
 			List<DomainEvent> listDomain = certificadoGenerado.getUncommittedChanges();
 			await SaveEvents(listDomain);
-
+			return patronAgregado;
 		}
 
-		public async Task UpdateDatosEmision(UpdateDatosEmisionComman command)
+		public async Task<DatosEmisionDTO> UpdateDatosEmision(UpdateDatosEmisionComman command)
 		{
 			var certificadoCambio = new CertificadoChangeApply();
 			var listDomainEvent = await GetEventsByAggregateID(command.CertificadoId);
 			var certificadoId = CertificadoId.Of(Guid.Parse(command.CertificadoId));
 			var certificadoGenerado = certificadoCambio.CreateAggregate(listDomainEvent, certificadoId);
+			var DatosEmisionActualizados = new DatosEmisionDTO(certificadoId);
 
 			var DatosEmision = CertificadoDatosEmision.Create(
 				command.NumeroCertificado,
@@ -80,17 +84,18 @@ namespace Calibracion.DDD.UseCase.UseCases
 
 
 			certificadoGenerado.UpdateDatosEmision(DatosEmision);
-
+			DatosEmisionActualizados.SetDatos(DatosEmision);
 
 			List<DomainEvent> listDomain = certificadoGenerado.getUncommittedChanges();
 			await SaveEvents(listDomain);
-
+			return DatosEmisionActualizados;
 		}
 
-		public async Task CrearCertificado(CreateCertificadoCommand command)
+		public async Task<CertificadoDTO> CrearCertificado(CreateCertificadoCommand command)
 		{
 
 			var certificado = new CertificadoCal(CertificadoId.Of(Guid.NewGuid()));
+			var certificadoCreado = new CertificadoDTO(certificado.Id);
 			var valoresTecnicos = CertificadoValoresTec.Create(
 					   command.ErrorFinal,
 					   command.Indicacion,
@@ -105,9 +110,12 @@ namespace Calibracion.DDD.UseCase.UseCases
 			certificado.SetValoresTecnicos(valoresTecnicos);
 			certificado.SetDatosEmision(DatosEmision);
 
+			certificadoCreado.SetValoresTecnicos(valoresTecnicos);
+			certificadoCreado.SetDatosEmision(DatosEmision);
+
 			List<DomainEvent> listDomain = certificado.getUncommittedChanges();
 			await SaveEvents(listDomain);
-
+			return certificadoCreado;
 		}
 
 		private async Task SaveEvents(List<DomainEvent> list)
