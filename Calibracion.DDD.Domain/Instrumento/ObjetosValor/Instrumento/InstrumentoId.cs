@@ -1,4 +1,5 @@
 ﻿using Calibracion.DDD.Domain.Cliente.ObjetosValor.Cliente;
+using Calibracion.DDD.Domain.CommonsDDD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +8,19 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento
 {
-	public record InstrumentoId
+	public class InstrumentoId :  Identity
 	{
 		public Guid Id { get; init; }
 
-		internal InstrumentoId(Guid id)
+		public InstrumentoId(Guid id) :  base (id)
 		{
 			Id = id;
 		}
 
-		public static InstrumentoId Create(Guid id)
+		public static InstrumentoId Of(Guid id)
 		{
 			return new InstrumentoId(id);
 		}
 
-		public static implicit operator Guid(InstrumentoId instrumentoId)
-		{
-			return instrumentoId.Id;
-		}
 	}
 }

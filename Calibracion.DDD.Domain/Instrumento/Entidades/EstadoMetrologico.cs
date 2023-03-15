@@ -9,11 +9,11 @@ namespace Calibracion.DDD.Domain.Instrumento.Entidades
 {
     public class EstadoMetrologico
     {
-        public Guid Id { get; init; }
+        public EstadoMetrologicoId Id { get; init; }
 
         public IntervaloCalibracion IntervaloCalibracion { get; private set; }
 
-        internal EstadoMetrologico(Guid id)
+        public EstadoMetrologico(EstadoMetrologicoId id)
         {
             Id = id;
         }

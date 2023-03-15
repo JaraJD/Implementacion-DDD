@@ -1,4 +1,5 @@
-﻿using Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento;
+﻿using Calibracion.DDD.Domain.CommonsDDD;
+using Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +8,18 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.EstadoMetrologico
 {
-	public record EstadoMetrologicoId
+	public class EstadoMetrologicoId : Identity
 	{
 		public Guid Id { get; init; }
 
-		internal EstadoMetrologicoId(Guid id)
+		public EstadoMetrologicoId(Guid id) : base (id)
 		{
 			Id = id;
 		}
 
-		public static EstadoMetrologicoId Create(Guid id)
+		public static EstadoMetrologicoId Of(Guid id)
 		{
 			return new EstadoMetrologicoId(id);
-		}
-
-		public static implicit operator Guid(EstadoMetrologicoId estadoMetrologicoId)
-		{
-			return estadoMetrologicoId.Id;
 		}
 	}
 }

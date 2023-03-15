@@ -2,7 +2,7 @@
 
 namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento
 {
-	public record DatosFabricacion
+	public class DatosFabricacion
 	{
 		public string Marca { get; init; }
 
@@ -10,7 +10,7 @@ namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento
 
 		public string Serie { get; init; }
 
-		internal DatosFabricacion(string marca, string modelo, string serie)
+		public DatosFabricacion(string marca, string modelo, string serie)
 		{
 			Marca = marca;
 			Modelo = modelo;

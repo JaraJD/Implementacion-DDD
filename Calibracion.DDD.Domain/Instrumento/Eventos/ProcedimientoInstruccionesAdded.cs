@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calibracion.DDD.Domain.Instrumento.Repositorios
+namespace Calibracion.DDD.Domain.Instrumento.Eventos
 {
-	internal interface IInstrumentoRepository
+	internal class ProcedimientoInstruccionesAdded
 	{
 	}
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.ProcedimientoCalibracion
 {
-	public record Instrucciones
+	public class Instrucciones
 	{
 		public string NumeroRepeticiones { get; init; }
 
 		public string TiempoEstabilizacion { get; init; }
 
-		internal Instrucciones(string numeroRepeticiones, string tiempoEstabilizacion)
+		public Instrucciones(string numeroRepeticiones, string tiempoEstabilizacion)
 		{
 			NumeroRepeticiones = numeroRepeticiones;
 			TiempoEstabilizacion = tiempoEstabilizacion;

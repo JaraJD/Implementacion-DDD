@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.EstadoMetrologico
 {
-	public record IntervaloCalibracion
+	public class IntervaloCalibracion
 	{
 		public double Oimld10 { get; init; }
 
 		public double ReaccionModificada { get; init; }
 
-		internal IntervaloCalibracion(double oimld10, double reaccionModificada)
+		public IntervaloCalibracion(double oimld10, double reaccionModificada)
 		{
 			Oimld10 = oimld10;
 			ReaccionModificada = reaccionModificada;
