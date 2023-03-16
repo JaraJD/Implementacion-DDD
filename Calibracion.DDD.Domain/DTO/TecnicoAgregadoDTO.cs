@@ -1,10 +1,5 @@
 ﻿using Calibracion.DDD.Domain.Certificado.Entidades;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.CertificadoCalibracion;
 
 namespace Calibracion.DDD.Domain.DTO
 {

@@ -1,11 +1,6 @@
 ﻿using Calibracion.DDD.Domain.Certificado.Eventos;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.CertificadoCalibracion;
 using Calibracion.DDD.Domain.CommonsDDD;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calibracion.DDD.Domain.Certificado.Entidades
 {
@@ -48,6 +43,10 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 
 					case PatronTrazabilidadAdded patronTrazabilidadAdded:
 						certificado.Patron.SetTrazabilidad(patronTrazabilidadAdded.Trazabilidad);
+						break;
+
+					case AgregadosIdAdded agregadosIdAdded:
+						certificado.SetAgregadosIdAgregado(agregadosIdAdded.AgregadosIds);
 						break;
 				}
 

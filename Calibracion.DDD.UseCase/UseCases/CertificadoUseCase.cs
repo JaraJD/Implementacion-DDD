@@ -1,9 +1,9 @@
 ﻿using Calibracion.DDD.Domain.Certificado.Comandos;
 using Calibracion.DDD.Domain.Certificado.Entidades;
 using Calibracion.DDD.Domain.Certificado.Eventos;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.CertificadoCalibracion;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.Patron;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.Tecnico;
 using Calibracion.DDD.Domain.CommonsDDD;
 using Calibracion.DDD.Domain.DTO;
 using Calibracion.DDD.Domain.Generics;
@@ -96,20 +96,29 @@ namespace Calibracion.DDD.UseCase.UseCases
 
 			var certificado = new CertificadoCal(CertificadoId.Of(Guid.NewGuid()));
 			var certificadoCreado = new CertificadoDTO(certificado.Id);
+
+			var agregadosId = AgregadosIds.Create(
+				command.InstrumentoId,
+				command.ClienteId
+				);
 			var valoresTecnicos = CertificadoValoresTec.Create(
-					   command.ErrorFinal,
-					   command.Indicacion,
-					   command.Tolerancia
-					);
+				command.ErrorFinal,
+				command.Indicacion,
+				command.Tolerancia
+				);
 			var DatosEmision = CertificadoDatosEmision.Create(
 				command.NumeroCertificado,
 				command.FechaRealizacion,
-				command.FechaEmision);
+				command.FechaEmision
+				);
+
 
 			certificado.setCertificado(certificado.Id);
+			certificado.SetAgregadosIdACertificado(agregadosId);
 			certificado.SetValoresTecnicos(valoresTecnicos);
 			certificado.SetDatosEmision(DatosEmision);
 
+			certificadoCreado.SetAgregadosIds(agregadosId);
 			certificadoCreado.SetValoresTecnicos(valoresTecnicos);
 			certificadoCreado.SetDatosEmision(DatosEmision);
 
@@ -131,6 +140,9 @@ namespace Calibracion.DDD.UseCase.UseCases
 				{
 					case CertificadoCreado certificadoCreado:
 						stored.EventBody = JsonConvert.SerializeObject(certificadoCreado);
+						break;
+					case AgregadosIdAdded agregadosIdAdded:
+						stored.EventBody = JsonConvert.SerializeObject(agregadosIdAdded);
 						break;
 					case ValoresTecAdded valoresTecAdded:
 						stored.EventBody = JsonConvert.SerializeObject(valoresTecAdded);
@@ -156,6 +168,7 @@ namespace Calibracion.DDD.UseCase.UseCases
 					case PatronTrazabilidadAdded patronTrazabilidadAdded:
 						stored.EventBody = JsonConvert.SerializeObject(patronTrazabilidadAdded);
 						break;
+					
 				}
 				await _storedEventRepository.AddAsync(stored);
 

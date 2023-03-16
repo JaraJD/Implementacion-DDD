@@ -1,12 +1,4 @@
-﻿using Calibracion.DDD.Domain.Certificado.Entidades;
-using Calibracion.DDD.Domain.Certificado.Eventos;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Calibracion.DDD.Domain.Certificado.ObjetosValor.CertificadoCalibracion;
 
 namespace Calibracion.DDD.Domain.DTO
 {
@@ -14,6 +6,7 @@ namespace Calibracion.DDD.Domain.DTO
 	{
 		public CertificadoId Id { get; private set; }
 
+		public AgregadosIds AgregadosIds { get; private set; }
 		public CertificadoValoresTec ValoresTecnicos { get; private set; }
 
 		public CertificadoDatosEmision DatosEmision { get; private set; }
@@ -21,6 +14,12 @@ namespace Calibracion.DDD.Domain.DTO
 		public CertificadoDTO(CertificadoId id)
 		{
 			Id = id;
+		}
+
+		public void SetAgregadosIds(AgregadosIds id)
+		{
+			AgregadosIds = id;
+
 		}
 
 		public void SetValoresTecnicos(CertificadoValoresTec valores)

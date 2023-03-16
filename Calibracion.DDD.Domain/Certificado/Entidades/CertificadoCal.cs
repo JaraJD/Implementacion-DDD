@@ -1,7 +1,6 @@
 ﻿using Calibracion.DDD.Domain.Certificado.Eventos;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.CertificadoCalibracion;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Patron;
-using Calibracion.DDD.Domain.CertificadoCalibracion.ObjetosValor.Tecnico;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.CertificadoCalibracion;
+using Calibracion.DDD.Domain.Certificado.ObjetosValor.Tecnico;
 using Calibracion.DDD.Domain.CommonsDDD;
 
 namespace Calibracion.DDD.Domain.Certificado.Entidades
@@ -9,6 +8,8 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
     public class CertificadoCal : AggregateEvent<CertificadoId>
     {
         public CertificadoId Id { get; private set; }
+
+		public AgregadosIds AgregadosIds { get; private set; }
 
 		public CertificadoValoresTec ValoresTecnicos { get; private set; }
 
@@ -59,6 +60,13 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 			AppendChange(new DatosEmisionUpdated(datos));
 		}
 
+		public void SetAgregadosIdACertificado(AgregadosIds id)
+		{
+			AppendChange(new AgregadosIdAdded(id));
+		}
+
+
+
 		public void SetTecnicoAgregado(Tecnico tecnico)
         {
 			Tecnico = tecnico;
@@ -79,6 +87,12 @@ namespace Calibracion.DDD.Domain.Certificado.Entidades
 		{
 			DatosEmision = datos;
 		}
+
+		public void SetAgregadosIdAgregado(AgregadosIds agregadosIds)
+		{
+			AgregadosIds = agregadosIds;
+		}
+
 
 	}
 }
