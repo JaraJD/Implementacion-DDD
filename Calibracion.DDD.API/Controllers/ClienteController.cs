@@ -29,10 +29,10 @@ namespace Calibracion.DDD.API.Controllers
 			 await _useCase.AddResponsableACliente(command);
 		}
 
-		//	[HttpPost("AgregarSolicitud")]
-		//	public async Task Addsolicitud_A_Cliente(AddResponsableCommand command)
-		//	{
-		//		return await _useCase.addSolicitudACliente(command);
-		//	}
+		[HttpPost("AgregarSolicitud")]
+		public async Task Add_Solicitud_A_Cliente(AddSolicitudCommand command)
+		{
+			await _useCase.AddSolicitudACliente(command);
+		}
 	}
 }

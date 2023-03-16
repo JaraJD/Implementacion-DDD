@@ -9,11 +9,11 @@ namespace Calibracion.DDD.Domain.Instrumento.Entidades
 {
     public class ProcedimientoCalibracion
     {
-        public Guid Id { get; init; }
+        public ProcedimientoId Id { get; init; }
 
         public Instrucciones Instrucciones { get; private set; }
 
-        internal ProcedimientoCalibracion(Guid id)
+        public ProcedimientoCalibracion(ProcedimientoId id)
         {
             Id = id;
         }

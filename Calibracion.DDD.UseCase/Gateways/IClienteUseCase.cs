@@ -13,7 +13,7 @@ namespace Calibracion.DDD.UseCase.Gateways
 
 		Task AddResponsableACliente(AddResponsableCommand command);
 
-		//Task addSolicitudACliente(AddSolicitudCommand command);
+		Task AddSolicitudACliente(AddSolicitudCommand command);
 
 		//Task UpdateDatosCliente(UpdateDatosClienteCommand command);
 	}

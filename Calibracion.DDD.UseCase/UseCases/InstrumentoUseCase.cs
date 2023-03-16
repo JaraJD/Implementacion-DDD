@@ -9,6 +9,7 @@ using Calibracion.DDD.Domain.Instrumento.Entidades;
 using Calibracion.DDD.Domain.Instrumento.Eventos;
 using Calibracion.DDD.Domain.Instrumento.ObjetosValor.EstadoMetrologico;
 using Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento;
+using Calibracion.DDD.Domain.Instrumento.ObjetosValor.ProcedimientoCalibracion;
 using Calibracion.DDD.UseCase.Gateways;
 using Newtonsoft.Json;
 using System;
@@ -61,6 +62,30 @@ namespace Calibracion.DDD.UseCase.UseCases
 			newEstado.SetIntervaloCalibracion(Intervalo);
 
 			InstrumentoGenerado.SetEstadoMetAInstrumento(newEstado);
+			//patronAgregado.SetPatron(newPatron);
+
+			List<DomainEvent> listDomain = InstrumentoGenerado.getUncommittedChanges();
+			await SaveEvents(listDomain);
+			//return patronAgregado;
+		}
+
+		public async Task AddProcedimientoAInstrumento(AddProcedimientoCommand command)
+		{
+			var instrumentoCambio = new InstrumentoChangeApply();
+			var listDomainEvent = await GetEventsByAggregateID(command.InstrumentoId);
+			var instrumentoId = InstrumentoId.Of(Guid.Parse(command.InstrumentoId));
+			var InstrumentoGenerado = instrumentoCambio.CreateAggregate(listDomainEvent, instrumentoId);
+			//var patronAgregado = new PatronAgregadoDTO(certificadoId);
+
+			ProcedimientoCalibracion newProcedimiento = new ProcedimientoCalibracion(ProcedimientoId.Of(Guid.NewGuid()));
+			var instrucciones = Instrucciones.Create(
+						command.NumeroRepeticiones,
+						command.TiempoEstabilizacion
+					);
+
+			newProcedimiento.SetInstrucciones(instrucciones);
+
+			InstrumentoGenerado.SetProcedimientoAInstrumento(newProcedimiento);
 			//patronAgregado.SetPatron(newPatron);
 
 			List<DomainEvent> listDomain = InstrumentoGenerado.getUncommittedChanges();

@@ -8,20 +8,20 @@ namespace Calibracion.DDD.Domain.Cliente.ObjetosValor.Solicitud
 {
 	public class Intervencion
 	{
-		public bool Calibracion { get; init; }
+		public string Calibracion { get; init; }
 
-		public Intervencion(bool calibracion)
+		public Intervencion(string calibracion)
 		{
 			Calibracion = calibracion;
 		}
 
-		public static Intervencion Create(bool calibracion)
+		public static Intervencion Create(string calibracion)
 		{
 			validate(calibracion);
 			return new Intervencion(calibracion);
 		}
 
-		public static void validate(bool calibracion)
+		public static void validate(string calibracion)
 		{
 			if (calibracion == null )
 			{

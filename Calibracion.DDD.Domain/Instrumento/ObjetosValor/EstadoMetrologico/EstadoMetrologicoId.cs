@@ -10,11 +10,9 @@ namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.EstadoMetrologico
 {
 	public class EstadoMetrologicoId : Identity
 	{
-		public Guid Id { get; init; }
 
 		public EstadoMetrologicoId(Guid id) : base (id)
 		{
-			Id = id;
 		}
 
 		public static EstadoMetrologicoId Of(Guid id)

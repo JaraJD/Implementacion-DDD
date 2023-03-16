@@ -7,6 +7,7 @@ using Calibracion.DDD.Domain.CommonsDDD;
 using Calibracion.DDD.Domain.Generics;
 using Calibracion.DDD.UseCase.Gateways;
 using Newtonsoft.Json;
+using Calibracion.DDD.Domain.Cliente.ObjetosValor.Solicitud;
 
 namespace Calibracion.DDD.UseCase.UseCases
 {
@@ -64,6 +65,29 @@ namespace Calibracion.DDD.UseCase.UseCases
 		}
 
 
+		public async Task AddSolicitudACliente(AddSolicitudCommand command)
+		{
+			var clienteCambio = new ClienteChangeApply();
+			var listDomainEvent = await GetEventsByAggregateID(command.ClienteId);
+			var clienteId = ClienteId.Of(Guid.Parse(command.ClienteId));
+			var clienteGenerado = clienteCambio.CreateAggregate(listDomainEvent, clienteId);
+			//var patronAgregado = new PatronAgregadoDTO(certificadoId);
+
+			Solicitud newSolicitud = new Solicitud(SolicitudId.Of(Guid.NewGuid()));
+			var intervencion = Intervencion.Create(
+						command.Calibracion
+					);
+
+			newSolicitud.SetIntervencion(intervencion);
+
+			clienteGenerado.SetSolicitudACliente(newSolicitud);
+			//patronAgregado.SetPatron(newPatron);
+
+			List<DomainEvent> listDomain = clienteGenerado.getUncommittedChanges();
+			await SaveEvents(listDomain);
+			//return patronAgregado;
+		}
+
 		private async Task SaveEvents(List<DomainEvent> list)
 		{
 			var array = list.ToArray();
@@ -84,8 +108,14 @@ namespace Calibracion.DDD.UseCase.UseCases
 					case ResponsableAdded responsableAdded:
 						stored.EventBody = JsonConvert.SerializeObject(responsableAdded);
 						break;
+					case ResponsableDatosAdded responsableDatosAdded:
+						stored.EventBody = JsonConvert.SerializeObject(responsableDatosAdded);
+						break;
 					case SolicitudAdded solicitudAdded:
 						stored.EventBody = JsonConvert.SerializeObject(solicitudAdded);
+						break;
+					case SolicitudIntervencionAdded solicitudIntervencionAdded:
+						stored.EventBody = JsonConvert.SerializeObject(solicitudIntervencionAdded);
 						break;
 				}
 				await _storedEventRepository.AddAsync(stored);

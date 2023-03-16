@@ -6,15 +6,10 @@ namespace Calibracion.DDD.Domain.Cliente.Entidades
 {
     public class Solicitud : Entity<SolicitudId>
     {
-        public SolicitudId Id { get; init; }
-
         public Intervencion Intervencion { get; private set; }
-
-        public Cliente Cliente { get; private set; }
 
         public Solicitud(SolicitudId id) :  base(id)
         {
-            Id = id;
 		}
 
         public void SetIntervencion(Intervencion intervencion)
@@ -22,9 +17,5 @@ namespace Calibracion.DDD.Domain.Cliente.Entidades
             Intervencion = intervencion;
         }
 
-		public void SetCliente(Cliente cliente)
-		{
-			Cliente = cliente;
-		}
 	}
 }

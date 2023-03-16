@@ -21,8 +21,16 @@ namespace Calibracion.DDD.Domain.Cliente.Entidades
 						cliente.SetResponsableAgregado(responsableAdded.Responsable);
 						break;
 
+					case ResponsableDatosAdded responsableDatosAdded:
+						cliente.Responsable.SetDatosPersonales(responsableDatosAdded.Datos);
+						break;
+
 					case SolicitudAdded solicitudAdded:
 						cliente.SetSolicitudAgregado(solicitudAdded.solicitud);
+						break;
+
+					case SolicitudIntervencionAdded solicitudIntervencionAdded:
+						cliente.Solicitud.SetIntervencion(solicitudIntervencionAdded.Intervencion);
 						break;
 				}
 

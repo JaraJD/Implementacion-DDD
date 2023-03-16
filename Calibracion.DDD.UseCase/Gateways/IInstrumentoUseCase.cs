@@ -9,6 +9,6 @@ namespace Calibracion.DDD.UseCase.Gateways
 
 		Task AddEstadoAInstrumento(AddEstadoCommand command);
 
-		//Task AddProcedimientoAInstrumento(AddProcedimientoCommand command);
+		Task AddProcedimientoAInstrumento(AddProcedimientoCommand command);
 	}
 }

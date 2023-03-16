@@ -23,16 +23,16 @@ namespace Calibracion.DDD.API.Controllers
 		}
 
 		[HttpPost("AgregarEstadoMetrologico")]
-		public async Task Add_Responsable_A_Cliente(AddEstadoCommand command)
+		public async Task Add_Estado_A_Instrumento(AddEstadoCommand command)
 		{
 			await _useCase.AddEstadoAInstrumento(command);
 		}
 
-		//	[HttpPost("AgregarSolicitud")]
-		//	public async Task Addsolicitud_A_Cliente(AddResponsableCommand command)
-		//	{
-		//		return await _useCase.addSolicitudACliente(command);
-		//	}
+		[HttpPost("AgregarProcedimiento")]
+		public async Task AddProcedimiento_A_Instrumento(AddProcedimientoCommand command)
+		{
+			await _useCase.AddProcedimientoAInstrumento(command);
+		}
 	}
 }
 

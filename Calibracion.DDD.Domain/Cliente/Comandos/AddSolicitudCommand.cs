@@ -10,9 +10,9 @@ namespace Calibracion.DDD.Domain.Cliente.Comandos
 	{
 		public string ClienteId { get; init; }
 
-		public bool Calibracion { get; init; }
+		public string Calibracion { get; init; }
 
-		public AddSolicitudCommand(string clienteId, bool calibracion)
+		public AddSolicitudCommand(string clienteId, string calibracion)
 		{
 			ClienteId = clienteId;
 			Calibracion = calibracion;

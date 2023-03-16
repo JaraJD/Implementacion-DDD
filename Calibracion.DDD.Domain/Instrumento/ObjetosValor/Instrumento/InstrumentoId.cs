@@ -10,11 +10,9 @@ namespace Calibracion.DDD.Domain.Instrumento.ObjetosValor.Instrumento
 {
 	public class InstrumentoId :  Identity
 	{
-		public Guid Id { get; init; }
 
 		public InstrumentoId(Guid id) :  base (id)
 		{
-			Id = id;
 		}
 
 		public static InstrumentoId Of(Guid id)
