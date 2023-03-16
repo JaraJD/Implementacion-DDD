@@ -13,8 +13,9 @@ namespace Calibracion.DDD.Domain.Certificado.Comandos
 
 		public string NumeroCertificado { get; init; }
 
-		public AddPatronCommand(double valorReferencia, string numeroCertificado)
+		public AddPatronCommand(string certificadoId, double valorReferencia, string numeroCertificado)
 		{
+			CertificadoId = certificadoId;
 			ValorReferencia = valorReferencia;
 			NumeroCertificado = numeroCertificado;
 		}

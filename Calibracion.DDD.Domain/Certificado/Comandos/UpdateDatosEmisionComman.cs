@@ -12,5 +12,13 @@ namespace Calibracion.DDD.Domain.Certificado.Comandos
 		public string NumeroCertificado { get; init; }
 		public string FechaRealizacion { get; init; }
 		public string FechaEmision { get; init; }
+
+		public UpdateDatosEmisionComman(string certificadoId, string numeroCertificado, string fechaRealizacion, string fechaEmision)
+		{
+			CertificadoId = certificadoId;
+			NumeroCertificado = numeroCertificado;
+			FechaRealizacion = fechaRealizacion;
+			FechaEmision = fechaEmision;
+		}
 	}
 }

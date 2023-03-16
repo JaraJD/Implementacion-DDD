@@ -1,21 +1,14 @@
-﻿using Calibracion.DDD.Domain.Instrumento.ObjetosValor.EstadoMetrologico;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Calibracion.DDD.Domain.CommonsDDD;
+using Calibracion.DDD.Domain.Instrumento.ObjetosValor.EstadoMetrologico;
 
 namespace Calibracion.DDD.Domain.Instrumento.Entidades
 {
-    public class EstadoMetrologico
+    public class EstadoMetrologico : Entity<EstadoMetrologicoId>
     {
-        public EstadoMetrologicoId Id { get; init; }
-
         public IntervaloCalibracion IntervaloCalibracion { get; private set; }
 
-        public EstadoMetrologico(EstadoMetrologicoId id)
+        public EstadoMetrologico(EstadoMetrologicoId id) : base(id)
         {
-            Id = id;
         }
 
         public void SetIntervaloCalibracion(IntervaloCalibracion datos)
